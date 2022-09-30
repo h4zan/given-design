@@ -1,0 +1,83 @@
+@charset "UTF-8";
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+  overflow-x: hidden;
+}
+
+.cover-img {
+  background: url(/assets/negative-space-black-forest-dawn.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  color: #fff;
+}
+
+.nav {
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  width: 100%;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3rem;
+  padding-right: 2.5rem;
+}
+
+.menu-items {
+  display: inline;
+}
+
+.intro-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 2rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+span {
+  content: "”";
+}
+
+.contact-wrapper {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 40px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-img {
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
+}
+
+.team-wrapper {
+  text-align: center;
+}
+
+/*# sourceMappingURL=main.css.map */
