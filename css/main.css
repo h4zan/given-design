@@ -1,10 +1,11 @@
-@charset "UTF-8";
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-size: 14px;
   font-family: "Times New Roman", Times, serif;
   overflow-x: hidden;
+  line-height: 1.5rem;
 }
 
 .cover-img {
@@ -14,23 +15,30 @@ body {
   height: 100vh;
   width: 100%;
   color: #fff;
+  position: relative;
 }
 
-.nav {
-  background-color: rgba(255, 255, 255, 0.1);
+.arrow {
   position: absolute;
+  bottom: 50px;
   width: 100%;
+  text-align: center;
+}
+
+.arrow-one::before {
+  background-color: black;
+  border-radius: 50%;
 }
 
 .menu {
   display: flex;
-  justify-content: flex-end;
-  gap: 3rem;
-  padding-right: 2.5rem;
+  flex-direction: column;
+  padding: 2.5rem;
 }
 
 .menu-items {
   display: inline;
+  text-align: center;
 }
 
 .intro-text {
@@ -38,21 +46,30 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  line-height: 2rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
-}
-
-span {
-  content: "”";
+  line-height: 2rem;
 }
 
 .contact-wrapper {
   background-color: #000;
   color: #fff;
   display: flex;
-  justify-content: space-around;
-  padding: 20px 40px;
+  flex-direction: column;
+  text-align: start;
+  padding: 10% 25%;
+  /*.contact-wrapper {
+    background-color: variables.$secondary-color;
+    color: variables.$primary-color;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 40px;
+  }
+  */
+}
+
+.contact-info {
+  line-height: 1.8rem;
 }
 
 li {
@@ -70,7 +87,7 @@ main {
 }
 
 .profile-img {
-  width: 200px;
+  width: 250px;
   height: auto;
   border-radius: 50%;
   box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
@@ -78,6 +95,121 @@ main {
 
 .team-wrapper {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icons {
+  padding-right: 20px;
+}
+
+.text-boxes {
+  background-color: #cccccc;
+  width: 250px;
+  height: 100px;
+  border-radius: 5px;
+  padding: 2rem;
+  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote {
+  font-size: 50px;
+}
+
+.arrow-one,
+.arrow-two {
+  font-size: 30px;
+  padding: 30px;
+}
+
+/*
+  Hamburger-menu
+*/
+/*nav-menu*/
+#toggle {
+  display: none;
+}
+
+/*menu botton*/
+.hamburger {
+  position: absolute;
+  right: 5%;
+  margin-left: -2em;
+  width: 2em;
+  height: 45px;
+  z-index: 5;
+  /*&:hover {
+    cursor: crosshair;
+
+  }*/
+}
+
+.hamburger div {
+  position: relative;
+  width: 2em;
+  height: 5px;
+  border-radius: 3px;
+  background-color: white;
+  margin-top: 8px;
+  transition: all 0.3s ease-in-out;
+  /*
+  @include mixin.tablet {
+    display: none;
+  }
+
+  @include mixin.tablet {
+    display: none;
+  }*/
+}
+
+/**
+Nav Styles
+**/
+.nav {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.2);
+  top: -100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  transform: scale(0);
+}
+
+.nav-wrapper {
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/*
+Animations
+**/
+#toggle:checked + .hamburger .top-bun {
+  transform: rotate(-45deg);
+  margin-top: 25px;
+}
+
+#toggle:checked + .hamburger .bottom-bun {
+  opacity: 0;
+  transform: rotate(45deg);
+}
+
+#toggle:checked + .hamburger .meat {
+  transform: rotate(45deg);
+  margin-top: -7px;
+}
+
+#toggle:checked + .hamburger + .nav {
+  top: 0;
+  transform: scale(1);
 }
 
 /*# sourceMappingURL=main.css.map */

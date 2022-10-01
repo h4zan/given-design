@@ -4,8 +4,18 @@
   color: variables.$primary-color;
 }
 
-//@mixin tablet {
-// @media screen and (min-width: 786px) {
-//  @content;
-//}
-//}
+@mixin l-height($l-h) {
+  line-height: $l-h;
+}
+
+@mixin tablet {
+  @media screen and (min-width: 786px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
