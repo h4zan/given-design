@@ -8,6 +8,11 @@
   line-height: $l-h;
 }
 
+@mixin flex {
+  display: flex;
+  flex-direction: column;
+}
+
 @mixin tablet {
   @media screen and (min-width: 786px) {
     @content;

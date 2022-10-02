@@ -1,18 +1,19 @@
 @use "variables";
-@use "mixin";
+
+@use "mixin/mixin";
 
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-size: 14px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Roman", Times, arial, serif;
   overflow-x: hidden;
   @include mixin.l-height(1.5rem);
+  scroll-behavior: smooth;
 }
 .cover-img {
   background: url(/assets/negative-space-black-forest-dawn.jpg);
-
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -28,14 +29,13 @@ body {
   text-align: center;
 }
 
-.arrow-one::before {
+.arrow-white::before {
   background-color: black;
   border-radius: 50%;
 }
 
 .menu {
-  display: flex;
-  flex-direction: column;
+  @include mixin.flex;
   padding: 2.5rem;
 }
 
@@ -49,7 +49,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1rem;
+  font-size: 18px;
   text-align: center;
   @include mixin.l-height(2rem);
 }
@@ -58,19 +58,23 @@ body {
   background-color: variables.$secondary-color;
   color: variables.$primary-color;
 
-  display: flex;
-  flex-direction: column;
+  @include mixin.flex;
   text-align: start;
   padding: 10% 25%;
 
-  /*.contact-wrapper {
-  background-color: variables.$secondary-color;
-  color: variables.$primary-color;
-  display: flex;
-  justify-content: space-around;
-  padding: 20px 40px;
-}
-*/
+  @include mixin.tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 30px 40px;
+  }
+
+  @include mixin.desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 40px 40px;
+  }
 }
 .contact-info {
   @include mixin.l-height(1.8rem);
@@ -86,8 +90,7 @@ a {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+  @include mixin.flex;
 }
 
 .profile-img {
@@ -99,10 +102,44 @@ main {
 
 .team-wrapper {
   text-align: center;
-  display: flex;
-  flex-direction: column;
+  @include mixin.flex;
   align-items: center;
+
+  @include mixin.desktop {
+    display: grid;
+    grid-template-columns: 400px 200px;
+    grid-auto-columns: minmax(200px, auto);
+    grid-gap: 100px;
+    grid-template-areas:
+      "team-tittle team-tittle"
+      "team-member-one team-member-two"
+      "team-member-three team-member-four"
+      "arrow arrow";
+  }
 }
+
+.t-title {
+  grid-area: team-tittle;
+}
+.t-member-one {
+  grid-area: team-member-one;
+}
+
+.t-member-two {
+  grid-area: team-member-two;
+}
+
+.arrow-black {
+  grid-area: arrow;
+}
+
+/*
+  @include mixin.desktop {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: center;
+  }*/
 
 .icons {
   padding-right: 20px;
@@ -123,9 +160,9 @@ main {
   font-size: 50px;
 }
 
-.arrow-one,
-.arrow-two {
-  font-size: 30px;
+.arrow-white,
+.arrow-black {
+  font-size: 35px;
   padding: 30px;
 }
 
@@ -147,11 +184,6 @@ main {
   width: 2em;
   height: 45px;
   z-index: 5;
-
-  /*&:hover {
-    cursor: crosshair;
-
-  }*/
 }
 .hamburger div {
   position: relative;
