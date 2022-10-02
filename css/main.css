@@ -1,11 +1,11 @@
 /* Error: Can't find stylesheet to import.
  *   ,
- * 1 | @use "variables";
- *   | ^^^^^^^^^^^^^^^^
+ * 1 | @use "/scss/variables";
+ *   | ^^^^^^^^^^^^^^^^^^^^^^
  *   '
- *   scss\mixin\_mixin.scss 1:1  @use
- *   scss\_index.scss 3:1        @use
- *   scss\main.scss 1:1          root stylesheet */
+ *   scss\mixins\_mixin.scss 1:1  @use
+ *   scss\_index.scss 3:1         @use
+ *   scss\main.scss 1:1           root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -15,5 +15,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use \"variables\";\d\a   \2502  ^^^^^^^^^^^^^^^^\a   \2575 \a   scss\\mixin\\_mixin.scss 1:1  @use\a   scss\\_index.scss 3:1        @use\a   scss\\main.scss 1:1          root stylesheet";
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use \"/scss/variables\";\d\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   scss\\mixins\\_mixin.scss 1:1  @use\a   scss\\_index.scss 3:1         @use\a   scss\\main.scss 1:1           root stylesheet";
 }
