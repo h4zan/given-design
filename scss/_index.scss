@@ -20,6 +20,7 @@ body {
   width: 100%;
   @include mixin.white-text;
   position: relative;
+  font-weight: 500;
 }
 
 .arrow {
@@ -30,8 +31,12 @@ body {
 }
 
 .arrow-white::before {
-  background-color: black;
+  background-color: variables.$secondary-color;
   border-radius: 50%;
+}
+
+.arrow-black {
+  color: variables.$secondary-color;
 }
 
 .menu {
@@ -63,17 +68,11 @@ body {
   padding: 10% 25%;
 
   @include mixin.tablet {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 30px 40px;
+    @include mixin.row;
   }
 
   @include mixin.desktop {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 40px 40px;
+    @include mixin.row;
   }
 }
 .contact-info {
@@ -86,7 +85,7 @@ li {
 
 a {
   text-decoration: none;
-  color: white;
+  color: variables.$primary-color;
 }
 
 main {
@@ -97,7 +96,7 @@ main {
   width: 250px;
   height: auto;
   border-radius: 50%;
-  box-shadow: 0 6px 50px 0 rgb(0 0 0 / 50%);
+  box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
 }
 
 .team-wrapper {
@@ -110,7 +109,7 @@ main {
     grid-template-columns: auto;
     grid-auto-columns: minmax(200px, auto);
     grid-gap: 100px;
-    column-gap: 200px;
+    column-gap: 150px;
 
     grid-template-areas:
       "team-tittle team-tittle"
@@ -133,17 +132,10 @@ main {
   grid-area: team-member-two;
 }
 
-.arrow-black {
+.arrow-arrow {
   grid-area: arrow;
+  padding-bottom: 40px;
 }
-
-/*
-  @include mixin.desktop {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-    justify-content: center;
-  }*/
 
 .icons {
   padding-right: 20px;
@@ -177,83 +169,143 @@ main {
   padding: 30px;
 }
 
-/*
-  Hamburger-menu
-*/
+/*menu */
 
-/*nav-menu*/
-#toggle {
-  display: none;
-}
+/* header */
 
-/*menu botton*/
+.header {
+  display: block;
+  font-size: 18px;
+  padding: 10px 20px;
 
-.hamburger {
-  position: absolute;
-  right: 5%;
-  margin-left: -2em;
-  width: 2em;
-  height: 45px;
-  z-index: 5;
-}
-.hamburger div {
-  position: relative;
-  width: 2em;
-  height: 5px;
-  border-radius: 3px;
-  background-color: white;
-  margin-top: 8px;
-  transition: all 0.3s ease-in-out;
-  /*
-  @include mixin.tablet {
-    display: none;
+  @include mixin.desktop {
+    background-color: variables.$b-transparent;
+    //box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
   }
 
   @include mixin.tablet {
-    display: none;
-  }*/
+    background-color: variables.$b-transparent;
+    // box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    z-index: 1;
+  }
 }
 
-/**
-Nav Styles
-**/
-.nav {
-  position: absolute;
-  width: 100%;
-  height: 200px;
-  background-color: rgb(255, 255, 255, 0.2);
-  top: -100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.header ul {
+  margin: 2px;
+  padding: 0;
   overflow: hidden;
-  transition: all 0.3s ease-in-out;
-  transform: scale(0);
+  text-align: center;
 }
-.nav-wrapper {
+
+.header li a:hover,
+.header .menu-btn:hover {
+  @include mixin.desktop {
+    text-decoration: underline;
+  }
+
+  @include mixin.tablet {
+    text-decoration: underline;
+  }
+}
+
+/* menu */
+
+.header .menu {
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  padding-right: 55px;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: flex;
+  justify-content: end;
+  padding: 10px 10px;
   position: relative;
-  overflow: hidden;
-  overflow-y: auto;
+  user-select: none;
+  background-color: none;
+}
+
+.header .menu-icon .navicon {
+  background: white;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: white;
+  content: "";
+  display: block;
   height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
 }
 
-/*
-Animations
-**/
-#toggle:checked + .hamburger .top-bun {
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
   transform: rotate(-45deg);
-  margin-top: 25px;
-}
-#toggle:checked + .hamburger .bottom-bun {
-  opacity: 0;
-  transform: rotate(45deg);
-}
-#toggle:checked + .hamburger .meat {
-  transform: rotate(45deg);
-  margin-top: -7px;
 }
 
-#toggle:checked + .hamburger + .nav {
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
-  transform: scale(1);
+}
+
+@include mixin.tablet {
+  .header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: end;
+  }
+
+  .header li a {
+    padding: 20px 20px;
+  }
+  .header .menu {
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
 }

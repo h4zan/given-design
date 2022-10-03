@@ -17,6 +17,7 @@ body {
   width: 100%;
   color: #fff;
   position: relative;
+  font-weight: 500;
 }
 
 .arrow {
@@ -27,8 +28,12 @@ body {
 }
 
 .arrow-white::before {
-  background-color: black;
+  background-color: #000;
   border-radius: 50%;
+}
+
+.arrow-black {
+  color: #000;
 }
 
 .menu {
@@ -60,12 +65,12 @@ body {
   text-align: start;
   padding: 10% 25%;
 }
-@media screen and (min-width: 786px) {
+@media screen and (min-width: 768px) {
   .contact-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 30px 40px;
+    padding: 40px 40px;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -87,7 +92,7 @@ li {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #fff;
 }
 
 main {
@@ -114,7 +119,7 @@ main {
     grid-template-columns: auto;
     grid-auto-columns: minmax(200px, auto);
     grid-gap: 100px;
-    column-gap: 200px;
+    column-gap: 150px;
     grid-template-areas: "team-tittle team-tittle" "team-member-one team-member-two" "team-member-three team-member-four" "arrow arrow";
     place-items: center;
     justify-content: center;
@@ -133,17 +138,11 @@ main {
   grid-area: team-member-two;
 }
 
-.arrow-black {
+.arrow-arrow {
   grid-area: arrow;
+  padding-bottom: 40px;
 }
 
-/*
-  @include mixin.desktop {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-    justify-content: center;
-  }*/
 .icons {
   padding-right: 20px;
 }
@@ -158,7 +157,7 @@ main {
   justify-content: center;
   align-items: center;
 }
-@media screen and (min-width: 786px) {
+@media screen and (min-width: 768px) {
   .text-boxes {
     width: 400px;
     height: 100px;
@@ -177,87 +176,141 @@ main {
   padding: 30px;
 }
 
-/*
-  Hamburger-menu
-*/
-/*nav-menu*/
-#toggle {
+/*menu */
+/* header */
+.header {
+  display: block;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+@media screen and (min-width: 1200px) {
+  .header {
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header {
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.header ul {
+  margin: 2px;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+  .header li a:hover,
+.header .menu-btn:hover {
+    text-decoration: underline;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header li a:hover,
+.header .menu-btn:hover {
+    text-decoration: underline;
+  }
+}
+
+/* menu */
+.header .menu {
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  padding-right: 55px;
+}
+
+/* menu icon */
+.header .menu-icon {
+  cursor: pointer;
+  display: flex;
+  justify-content: end;
+  padding: 10px 10px;
+  position: relative;
+  user-select: none;
+  background-color: none;
+}
+
+.header .menu-icon .navicon {
+  background: white;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: white;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+.header .menu-btn {
   display: none;
 }
 
-/*menu botton*/
-.hamburger {
-  position: absolute;
-  right: 5%;
-  margin-left: -2em;
-  width: 2em;
-  height: 45px;
-  z-index: 5;
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
 }
 
-.hamburger div {
-  position: relative;
-  width: 2em;
-  height: 5px;
-  border-radius: 3px;
-  background-color: white;
-  margin-top: 8px;
-  transition: all 0.3s ease-in-out;
-  /*
-  @include mixin.tablet {
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: end;
+  }
+  .header li a {
+    padding: 20px 20px;
+  }
+  .header .menu {
+    max-height: none;
+  }
+  .header .menu-icon {
     display: none;
   }
-
-  @include mixin.tablet {
-    display: none;
-  }*/
-}
-
-/**
-Nav Styles
-**/
-.nav {
-  position: absolute;
-  width: 100%;
-  height: 200px;
-  background-color: rgba(255, 255, 255, 0.2);
-  top: -100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
-  transform: scale(0);
-}
-
-.nav-wrapper {
-  position: relative;
-  overflow: hidden;
-  overflow-y: auto;
-  height: 100%;
-}
-
-/*
-Animations
-**/
-#toggle:checked + .hamburger .top-bun {
-  transform: rotate(-45deg);
-  margin-top: 25px;
-}
-
-#toggle:checked + .hamburger .bottom-bun {
-  opacity: 0;
-  transform: rotate(45deg);
-}
-
-#toggle:checked + .hamburger .meat {
-  transform: rotate(45deg);
-  margin-top: -7px;
-}
-
-#toggle:checked + .hamburger + .nav {
-  top: 0;
-  transform: scale(1);
 }
 
 /*# sourceMappingURL=main.css.map */
