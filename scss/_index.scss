@@ -107,14 +107,18 @@ main {
 
   @include mixin.desktop {
     display: grid;
-    grid-template-columns: 400px 200px;
+    grid-template-columns: auto;
     grid-auto-columns: minmax(200px, auto);
     grid-gap: 100px;
+    column-gap: 200px;
+
     grid-template-areas:
       "team-tittle team-tittle"
       "team-member-one team-member-two"
       "team-member-three team-member-four"
       "arrow arrow";
+    place-items: center;
+    justify-content: center;
   }
 }
 
@@ -154,10 +158,17 @@ main {
   padding-top: 20px;
   justify-content: center;
   align-items: center;
+
+  @include mixin.tablet {
+    width: 400px;
+    height: 100px;
+    border-radius: 7px;
+    text-align: center;
+  }
 }
 
 .quote {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 .arrow-white,
