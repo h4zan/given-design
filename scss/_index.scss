@@ -11,6 +11,7 @@ body {
   overflow-x: hidden;
   @include mixin.l-height(1.5rem);
   scroll-behavior: smooth;
+  letter-spacing: 0.5px;
 }
 .cover-img {
   background: url(/assets/negative-space-black-forest-dawn.jpg);
@@ -20,7 +21,106 @@ body {
   width: 100%;
   @include mixin.white-text;
   position: relative;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+.intro-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  text-align: center;
+  @include mixin.l-height(2rem);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: variables.$primary-color;
+}
+
+main {
+  @include mixin.flex;
+}
+
+.team-wrapper {
+  text-align: center;
+  @include mixin.flex;
+  align-items: center;
+
+  @include mixin.desktop {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-columns: minmax(200px, auto);
+    grid-gap: 100px;
+    column-gap: 150px;
+    place-items: center;
+    justify-content: center;
+    grid-template-areas:
+      "team-tittle team-tittle"
+      "team-member-one team-member-two"
+      "team-member-three team-member-four"
+      "arrow arrow";
+  }
+
+  .t-title {
+    grid-area: team-tittle;
+
+    font-size: 24px;
+    padding-top: 30px;
+  }
+  .t-member-one {
+    grid-area: team-member-one;
+  }
+
+  .t-member-two {
+    grid-area: team-member-two;
+  }
+
+  .t-member-three {
+    grid-area: team-member-three;
+  }
+  .t-member-four {
+    grid-area: team-member-four;
+  }
+
+  .arrow-arrow {
+    grid-area: arrow;
+    padding-bottom: 40px;
+  }
+}
+
+.profile-img {
+  width: 250px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
+}
+
+.text-boxes {
+  background-color: variables.$box-color;
+  width: 250px;
+  height: 100px;
+  border-radius: 5px;
+  padding: 2rem;
+  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
+
+  .quote {
+    font-size: 40px;
+  }
+
+  @include mixin.tablet {
+    width: 400px;
+    height: 100px;
+    border-radius: 7px;
+    text-align: center;
+  }
 }
 
 .arrow {
@@ -30,6 +130,12 @@ body {
   text-align: center;
 }
 
+.arrow-white,
+.arrow-black {
+  font-size: 35px;
+  padding: 30px;
+}
+
 .arrow-white::before {
   background-color: variables.$secondary-color;
   border-radius: 50%;
@@ -37,26 +143,6 @@ body {
 
 .arrow-black {
   color: variables.$secondary-color;
-}
-
-.menu {
-  @include mixin.flex;
-  padding: 2.5rem;
-}
-
-.menu-items {
-  display: inline;
-  text-align: center;
-}
-
-.intro-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 18px;
-  text-align: center;
-  @include mixin.l-height(2rem);
 }
 
 .contact-wrapper {
@@ -75,98 +161,13 @@ body {
     @include mixin.row;
   }
 }
+
 .contact-info {
   @include mixin.l-height(1.8rem);
-}
 
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: variables.$primary-color;
-}
-
-main {
-  @include mixin.flex;
-}
-
-.profile-img {
-  width: 250px;
-  height: auto;
-  border-radius: 50%;
-  box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
-}
-
-.team-wrapper {
-  text-align: center;
-  @include mixin.flex;
-  align-items: center;
-
-  @include mixin.desktop {
-    display: grid;
-    grid-template-columns: auto;
-    grid-auto-columns: minmax(200px, auto);
-    grid-gap: 100px;
-    column-gap: 150px;
-
-    grid-template-areas:
-      "team-tittle team-tittle"
-      "team-member-one team-member-two"
-      "team-member-three team-member-four"
-      "arrow arrow";
-    place-items: center;
-    justify-content: center;
+  .icons {
+    padding-right: 20px;
   }
-}
-
-.t-title {
-  grid-area: team-tittle;
-}
-.t-member-one {
-  grid-area: team-member-one;
-}
-
-.t-member-two {
-  grid-area: team-member-two;
-}
-
-.arrow-arrow {
-  grid-area: arrow;
-  padding-bottom: 40px;
-}
-
-.icons {
-  padding-right: 20px;
-}
-
-.text-boxes {
-  background-color: variables.$box-color;
-  width: 250px;
-  height: 100px;
-  border-radius: 5px;
-  padding: 2rem;
-  padding-top: 20px;
-  justify-content: center;
-  align-items: center;
-
-  @include mixin.tablet {
-    width: 400px;
-    height: 100px;
-    border-radius: 7px;
-    text-align: center;
-  }
-}
-
-.quote {
-  font-size: 40px;
-}
-
-.arrow-white,
-.arrow-black {
-  font-size: 35px;
-  padding: 30px;
 }
 
 /*menu */
@@ -176,33 +177,43 @@ main {
 .header {
   display: block;
   font-size: 18px;
-  padding: 10px 20px;
+  padding: 20px 20px;
+  background-color: variables.$b-transparent;
 
   @include mixin.desktop {
-    background-color: variables.$b-transparent;
-    //box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: row;
     justify-content: end;
     width: 100%;
+    padding: 0;
   }
 
   @include mixin.tablet {
-    background-color: variables.$b-transparent;
-    // box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: row;
     justify-content: end;
     width: 100%;
-    z-index: 1;
+    padding: 0;
+  }
+}
+.header li a {
+  @include mixin.tablet {
+    padding: 20px 20px;
   }
 }
 
 .header ul {
-  margin: 2px;
-  padding: 0;
+  padding: 2px;
   overflow: hidden;
   text-align: center;
+  font-size: 18px;
+
+  @include mixin.tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: end;
+  }
 }
 
 .header li a:hover,
@@ -221,7 +232,11 @@ main {
 .header .menu {
   max-height: 0;
   transition: max-height 0.2s ease-out;
-  padding-right: 55px;
+  padding-right: 20px;
+
+  @include mixin.table {
+    max-height: none;
+  }
 }
 
 /* menu icon */
@@ -234,15 +249,20 @@ main {
   position: relative;
   user-select: none;
   background-color: none;
+
+  @include mixin.tablet {
+    display: none;
+  }
 }
 
 .header .menu-icon .navicon {
   background: white;
   display: block;
-  height: 2px;
+  height: 5px;
   position: relative;
   transition: 0.2s ease-out;
-  width: 18px;
+  width: 33px;
+  border-radius: 7px;
 }
 
 .header .menu-icon .navicon:before,
@@ -257,11 +277,13 @@ main {
 }
 
 .header .menu-icon .navicon:before {
-  top: 5px;
+  top: 11px;
+  border-radius: 7px;
 }
 
 .header .menu-icon .navicon:after {
-  top: -5px;
+  top: -11px;
+  border-radius: 7px;
 }
 
 /* menu btn */
@@ -270,7 +292,8 @@ main {
   display: none;
 }
 
-.header .menu-btn:checked ~ .menu {
+.header .menu-btn:checked ~ .menu,
+.menu-icon {
   max-height: 240px;
 }
 
@@ -289,23 +312,4 @@ main {
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
-}
-
-@include mixin.tablet {
-  .header ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    text-align: end;
-  }
-
-  .header li a {
-    padding: 20px 20px;
-  }
-  .header .menu {
-    max-height: none;
-  }
-  .header .menu-icon {
-    display: none;
-  }
 }
