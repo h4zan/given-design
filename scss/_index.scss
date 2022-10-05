@@ -2,6 +2,12 @@
 
 @use "mixins/mixin";
 
+@use "mixins/layout";
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -10,7 +16,6 @@ body {
   font-family: "Times New Roman", Times, arial, serif;
   overflow-x: hidden;
   @include mixin.l-height(1.5rem);
-  scroll-behavior: smooth;
   letter-spacing: 0.5px;
 }
 
@@ -40,28 +45,28 @@ li {
 }
 
 a {
-  text-decoration: none;
+  @include mixin.decoration(none);
   color: variables.$primary-color;
 }
 
 .main-continer {
-  @include mixin.flex;
+  @include layout.column;
 }
 
 .team-wrapper {
   text-align: center;
-  @include mixin.flex;
+  @include layout.column;
   align-items: center;
 
   @include mixin.desktop {
-    @include mixin.grid;
+    @include layout.grid;
   }
 }
 
 .profile-img {
   width: 250px;
   height: auto;
-  border-radius: 50%;
+  @include mixin.corners(50%);
   box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -69,7 +74,7 @@ a {
   background-color: variables.$box-color;
   width: 250px;
   height: 100px;
-  border-radius: 5px;
+  @include mixin.corners(5px);
   padding: 2rem;
   padding-top: 20px;
   justify-content: center;
@@ -82,7 +87,7 @@ a {
   @include mixin.tablet {
     width: 400px;
     height: 100px;
-    border-radius: 7px;
+    @include mixin.corners(7px);
     text-align: center;
   }
 }
@@ -102,39 +107,39 @@ a {
 
 .arrow-white::before {
   background-color: variables.$secondary-color;
-  border-radius: 50%;
+  @include mixin.corners(50%);
 }
 
 .arrow-black {
   color: variables.$secondary-color;
 }
 
-.contact-wrapper {
+.contact {
   background-color: variables.$secondary-color;
   color: variables.$primary-color;
 
-  @include mixin.flex;
+  @include layout.column;
   text-align: start;
   padding: 10% 25%;
 
   @include mixin.tablet {
-    @include mixin.row;
+    @include layout.row;
   }
 
   @include mixin.desktop {
-    @include mixin.row;
+    @include layout.row;
+  }
+
+  &__info {
+    @include mixin.l-height(1.8rem);
+
+    .icons {
+      padding-right: 20px;
+    }
   }
 }
 
-.contact-info {
-  @include mixin.l-height(1.8rem);
-
-  .icons {
-    padding-right: 20px;
-  }
-}
-
-/*menu */
+/*na-menu */
 .nav {
   display: block;
   font-size: 18px;
@@ -172,11 +177,11 @@ a {
 .nav li a:hover,
 .nav .menu-btn:hover {
   @include mixin.desktop {
-    text-decoration: underline;
+    @include mixin.decoration(underline);
   }
 
   @include mixin.tablet {
-    text-decoration: underline;
+    @include mixin.decoration(underline);
   }
 }
 
@@ -209,34 +214,34 @@ a {
 }
 
 .nav .menu-icon .navicon {
-  background: white;
+  background: variables.$primary-color;
   display: block;
   height: 5px;
   position: relative;
   transition: 0.2s ease-out;
   width: 33px;
-  border-radius: 7px;
+  @include mixin.corners(7px);
 }
 
 .nav .menu-icon .navicon:before,
 .nav .menu-icon .navicon:after {
-  background: white;
+  background: variables.$primary-color;
   content: "";
   display: block;
   height: 100%;
   position: absolute;
-  transition: all 0.2s ease-out;
+  transition: 0.2s ease-out;
   width: 100%;
 }
 
 .nav .menu-icon .navicon:before {
   top: 11px;
-  border-radius: 7px;
+  @include mixin.corners(7px);
 }
 
 .nav .menu-icon .navicon:after {
   top: -11px;
-  border-radius: 7px;
+  @include mixin.corners(7px);
 }
 
 /* menu btn */

@@ -8,56 +8,12 @@
   line-height: $l-h;
 }
 
-@mixin flex {
-  display: flex;
-  flex-direction: column;
+@mixin decoration($line) {
+  text-decoration: $line;
 }
 
-@mixin row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 40px 40px;
-}
-
-@mixin grid {
-  display: grid;
-  grid-template-columns: auto;
-  grid-auto-columns: minmax(200px, auto);
-  grid-gap: 100px;
-  column-gap: 150px;
-  place-items: center;
-  justify-content: center;
-  grid-template-areas:
-    "team-tittle team-tittle"
-    "team-member-one team-member-two"
-    "team-member-three team-member-four"
-    "arrow arrow";
-
-  .t-title {
-    grid-area: team-tittle;
-    font-size: 24px;
-    padding-top: 30px;
-  }
-  .t-member-one {
-    grid-area: team-member-one;
-  }
-
-  .t-member-two {
-    grid-area: team-member-two;
-  }
-
-  .t-member-three {
-    grid-area: team-member-three;
-  }
-  .t-member-four {
-    grid-area: team-member-four;
-  }
-
-  .arrow-arrow {
-    grid-area: arrow;
-    padding-bottom: 40px;
-  }
+@mixin corners($border) {
+  border-radius: $border;
 }
 
 @mixin navigation {
