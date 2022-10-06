@@ -35,9 +35,9 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
-  @include mixin.l-height(2rem);
+  @include mixin.l-height(1.8rem);
 }
 
 li {
@@ -49,11 +49,11 @@ a {
   color: variables.$primary-color;
 }
 
-.main-continer {
+.main-container {
   @include layout.column;
 }
 
-.team-wrapper {
+.team {
   text-align: center;
   @include layout.column;
   align-items: center;
@@ -61,56 +61,57 @@ a {
   @include mixin.desktop {
     @include layout.grid;
   }
-}
 
-.profile-img {
-  width: 250px;
-  height: auto;
-  @include mixin.corners(50%);
-  box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
-}
+  &__profile-img {
+    width: 250px;
+    height: auto;
+    @include mixin.corners(50%);
+    box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
+  }
 
-.text-boxes {
-  background-color: variables.$box-color;
-  width: 250px;
-  height: 100px;
-  @include mixin.corners(5px);
-  padding: 2rem;
-  padding-top: 20px;
-  justify-content: center;
-  align-items: center;
+  &__text-boxes {
+    background-color: variables.$box-color;
+    width: 250px;
+    height: 100px;
+    @include mixin.corners(5px);
+    padding: 2rem;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
 
-  .quote {
+    @include mixin.tablet {
+      width: 400px;
+      height: 100px;
+      @include mixin.corners(7px);
+      text-align: center;
+    }
+  }
+
+  &__quote {
     font-size: 40px;
   }
-
-  @include mixin.tablet {
-    width: 400px;
-    height: 100px;
-    @include mixin.corners(7px);
-    text-align: center;
-  }
 }
 
-.arrow {
+.arrow-primary {
   position: absolute;
   bottom: 50px;
   width: 100%;
   text-align: center;
+
+  &__white {
+    font-size: 35px;
+    padding: 30px;
+  }
+
+  &__white::before {
+    background-color: variables.$secondary-color;
+    @include mixin.corners(50%);
+  }
 }
 
-.arrow-white,
 .arrow-black {
   font-size: 35px;
   padding: 30px;
-}
-
-.arrow-white::before {
-  background-color: variables.$secondary-color;
-  @include mixin.corners(50%);
-}
-
-.arrow-black {
   color: variables.$secondary-color;
 }
 
@@ -132,14 +133,16 @@ a {
 
   &__info {
     @include mixin.l-height(1.8rem);
-
-    .icons {
-      padding-right: 20px;
-    }
   }
 }
 
-/*na-menu */
+.social-media {
+  & .social-media__icons {
+    padding-right: 20px;
+  }
+}
+
+/*nav-menu*/
 .nav {
   display: block;
   font-size: 18px;
@@ -186,7 +189,6 @@ a {
 }
 
 /* menu */
-
 .nav .menu {
   max-height: 0;
   transition: max-height 0.2s ease-out;

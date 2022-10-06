@@ -19,13 +19,13 @@
   place-items: center;
   justify-content: center;
   grid-template-areas:
-    "team-tittle team-tittle"
+    "team-title team-title"
     "team-member-one team-member-two"
     "team-member-three team-member-four"
     "arrow arrow";
 
   .t-title {
-    grid-area: team-tittle;
+    grid-area: team-title;
     font-size: 24px;
     padding-top: 30px;
   }
@@ -44,7 +44,7 @@
     grid-area: team-member-four;
   }
 
-  .arrow-last {
+  .arrow-secondary {
     grid-area: arrow;
     padding-bottom: 40px;
   }
