@@ -30,118 +30,6 @@ body {
   font-weight: 400;
 }
 
-.intro-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 18px;
-  text-align: center;
-  @include mixin.l-height(1.8rem);
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  @include mixin.decoration(none);
-  color: variables.$primary-color;
-}
-
-.main-container {
-  @include layout.column;
-}
-
-.team {
-  text-align: center;
-  @include layout.column;
-  align-items: center;
-
-  @include mixin.desktop {
-    @include layout.grid;
-  }
-
-  &__profile-img {
-    width: 250px;
-    height: auto;
-    @include mixin.corners(50%);
-    box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
-  }
-
-  &__text-boxes {
-    background-color: variables.$box-color;
-    width: 250px;
-    height: 100px;
-    @include mixin.corners(5px);
-    padding: 2rem;
-    padding-top: 20px;
-    justify-content: center;
-    align-items: center;
-
-    @include mixin.tablet {
-      width: 400px;
-      height: 100px;
-      @include mixin.corners(7px);
-      text-align: center;
-    }
-  }
-
-  &__quote {
-    font-size: 40px;
-  }
-}
-
-.arrow-primary {
-  position: absolute;
-  bottom: 50px;
-  width: 100%;
-  text-align: center;
-
-  &__white {
-    font-size: 35px;
-    padding: 30px;
-  }
-
-  &__white::before {
-    background-color: variables.$secondary-color;
-    @include mixin.corners(50%);
-  }
-}
-
-.arrow-black {
-  font-size: 35px;
-  padding: 30px;
-  color: variables.$secondary-color;
-}
-
-.contact {
-  background-color: variables.$secondary-color;
-  color: variables.$primary-color;
-
-  @include layout.column;
-  text-align: start;
-  padding: 10% 25%;
-
-  @include mixin.tablet {
-    @include layout.row;
-  }
-
-  @include mixin.desktop {
-    @include layout.row;
-  }
-
-  &__info {
-    @include mixin.l-height(1.8rem);
-  }
-}
-
-.social-media {
-  & .social-media__icons {
-    padding-right: 20px;
-  }
-}
-
 /*nav-menu*/
 .nav {
   display: block;
@@ -272,4 +160,116 @@ a {
 .nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
 .nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
+}
+
+.intro-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  text-align: center;
+  @include mixin.l-height(1.8rem);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  @include mixin.decoration(none);
+  color: variables.$primary-color;
+}
+
+.main-container {
+  @include layout.column;
+}
+
+.team {
+  text-align: center;
+  @include layout.column;
+  align-items: center;
+
+  @include mixin.desktop {
+    @include layout.grid;
+  }
+
+  &__profile-img {
+    width: 250px;
+    height: auto;
+    @include mixin.corners(50%);
+    box-shadow: 0 6px 50px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  &__text-boxes {
+    background-color: variables.$box-color;
+    width: 250px;
+    height: 100px;
+    @include mixin.corners(5px);
+    padding: 2rem;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
+
+    @include mixin.tablet {
+      width: 400px;
+      height: 100px;
+      @include mixin.corners(7px);
+      text-align: center;
+    }
+  }
+
+  &__quote {
+    font-size: 40px;
+  }
+}
+
+.arrow-primary {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+
+  &__white {
+    font-size: 35px;
+    padding: 30px;
+  }
+
+  &__white::before {
+    background-color: variables.$secondary-color;
+    @include mixin.corners(50%);
+  }
+}
+
+.arrow-secondary__black {
+  font-size: 35px;
+  padding: 30px;
+  color: variables.$secondary-color;
+}
+
+.contact {
+  background-color: variables.$secondary-color;
+  color: variables.$primary-color;
+
+  @include layout.column;
+  text-align: start;
+  padding: 10% 25%;
+
+  @include mixin.tablet {
+    @include layout.row;
+  }
+
+  @include mixin.desktop {
+    @include layout.row;
+  }
+
+  &__info {
+    @include mixin.l-height(1.8rem);
+  }
+}
+
+.social-media {
+  & .social-media__icons {
+    padding-right: 20px;
+  }
 }
